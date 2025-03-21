@@ -10,7 +10,12 @@ import Charts
 
 struct StaticChartView: View {
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading, spacing: 20){
+            
+            Form{
+                Circle()
+                    .frame(width:100, height:100)
+            }
             
             Form{
             Text("Seus Pokemons")
@@ -21,7 +26,7 @@ struct StaticChartView: View {
             
             Chart{
                 BarMark(x: .value("Type","Grama"),
-                        y: .value("Voador", 124))
+                        y: .value("Voador", 52))
                 .foregroundStyle(.green)
                 
                 BarMark(x: .value("Type","Fogo"),
@@ -54,6 +59,7 @@ struct StaticChartView: View {
                 .foregroundStyle(.yellow)
                 
             }
+            .frame(height:150)
             
             }
             .aspectRatio(1, contentMode: .fit)
