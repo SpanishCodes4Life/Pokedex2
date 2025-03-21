@@ -1,0 +1,57 @@
+//
+//  StaticChartView.swift
+//  teste
+//
+//  Created by Aluno Mack on 20/03/25.
+//
+
+import SwiftUI
+import Charts
+
+struct StaticChartView: View {
+
+    let QPokemon: [TipoPokemon] = [
+        .init(tipo: .tipo, qpoke : 12),
+        .init(tipo: .tipo, qpoke : 16),
+        .init(tipo: .tipo, qpoke : 8),
+        .init(tipo: .tipo, qpoke : 100),
+        .init(tipo: .tipo, qpoke : 40),
+        .init(tipo: .tipo, qpoke : 90),
+        .init(tipo: .tipo, qpoke : 100),
+        .init(tipo: .tipo, qpoke : 100),
+        .init(tipo: .tipo, qpoke : 100),
+        .init(tipo: .tipo, qpoke : 100),
+    ]
+
+    var body: some View {
+        VStack(alignment: .leading){
+            Form{
+            Text("Seus Pokemons")
+                .font(.largeTitle)
+                .bold()
+                .foregroundColor(.red)
+                .opacity(0.80)
+
+                ForEach(QPokemon) { TipoPokemon in
+                    BarMark(x:.value(TipoPokemon.tipo), y:.value(TipoPokemon.qpoke, 12))
+                        .opacity(0.80)
+                        .foregroundStyle(Color.pink.gradient)
+
+                }
+            }
+            .aspectRatio(1, contentMode: .fit)
+            .padding()
+        }
+    }
+}
+
+struct StaticChartView_Previews: PreviewProvider {
+    static var previews: some View {
+        StaticChartView()
+    }
+}
+struct TipoPokemon: Identifiable {
+    let id = UUID()
+    let tipo : String
+    let qpoke : Int
+}
